@@ -46,10 +46,27 @@ module.exports = {
                                 localIdentName: '[local]__[hash:base64:5]',
                                 exportLocalsConvention: 'camelCase'
                             },
-                            importLoaders: 1,
+                            importLoaders: 2,
                         },
                     },
-                    'sass-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    require('postcss-preset-env')({
+                                        stage: 0, // Включает все возможности CSS
+                                    }),
+                                ],
+                            },
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                          implementation: require('sass'), // Подключение новой версии dart-sass
+                        },
+                      },
                 ],
                 exclude: /node_modules/,
             },

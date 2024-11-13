@@ -22,8 +22,7 @@ export default function App() {
         />
         <Input 
         
-        value='error'
-        label="asdasd"
+        label="error"
         name="asfasf"
        
         error='Помой жопу'

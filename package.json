@@ -1,6 +1,6 @@
 {
-  "name": "another-one-ui",
-  "version": "0.0.2",
+  "name": "another-one-ui-v3",
+  "version": "0.0.6",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -36,6 +36,9 @@
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.80.7",
@@ -53,7 +56,8 @@
     "react-dom": "^18.3.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/styles/variables/colors.scss"
   ],
   "dependencies": {
     "@storybook/addon-styling-webpack": "^1.0.0",
