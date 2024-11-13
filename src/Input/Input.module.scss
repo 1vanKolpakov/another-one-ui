@@ -1,0 +1,75 @@
+.container {
+  padding-top: 15px;
+  margin-bottom: 10px;
+  p {
+      position: absolute;
+      margin: 0;
+      font-size: 12px;
+      color: red;
+  }
+}
+.innerContainer {
+  position: relative;
+  height: 100%;
+}
+
+.label, .labelFocused {
+  display: flex;
+  align-items: center;
+  transform: translateY(0%);
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  // width: 100%;
+  padding-left: 10px;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.labelFocused {
+  display: flex;
+  top: -8px;
+  font-size: 10px;
+  // align-items: flex-start;
+  transform: translateY(-18px);
+  
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-width: 1px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--grey-5);
+  background: var(--background-secondary);
+  &:focus {
+      outline: none;
+      // border: none;
+      border: 1px solid green;
+
+      &~label {
+          background-color: red;
+      }
+      
+  }
+  &:focus + .labelFocused {
+      color: green;
+  }
+  &.errorInput {
+      border:1px solid red;
+  }
+  &:hover {
+      background: var(--background-default);
+  }
+  &:disabled {
+      background: var(--stroke-light-grey);
+      cursor: not-allowed;
+  }
+}
+
+.errorContainer {
+  height: 14px;
+  position: relative;
+}
