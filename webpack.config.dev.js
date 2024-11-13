@@ -43,7 +43,12 @@ module.exports = {
                             importLoaders: 1,
                         },
                     },
-                    'sass-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                          implementation: require('sass'), // Подключение новой версии dart-sass
+                        },
+                      },
                 ],
                 exclude: /node_modules/,
             },

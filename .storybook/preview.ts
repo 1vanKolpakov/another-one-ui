@@ -4,6 +4,8 @@ import '../src/styles/index.scss'
 
 
 const preview: Preview = {
+  // decorators: [
+  // ]
   parameters: {
     controls: {
       matchers: {
@@ -12,9 +14,8 @@ const preview: Preview = {
       },
     },
   },
-  // decorators: [
 
-  // ]
+  tags: ["autodocs"]
 };
 
 export default preview;

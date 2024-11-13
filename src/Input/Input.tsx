@@ -10,9 +10,10 @@ export interface InputProps {
     onBlur?: any
     onFocus?: any
     disabled?: boolean
+    onChange?: any
 }
 
-const Input: FC<InputProps> = ({ value, onBlur, onFocus, label, error, name,disabled, ...props }) => {
+const Input: FC<InputProps> = ({ value, onBlur, onFocus,onChange, label, error, name,disabled, ...props }) => {
 
     const [focused, setFocused] = React.useState(false)
 
@@ -24,6 +25,10 @@ const Input: FC<InputProps> = ({ value, onBlur, onFocus, label, error, name,disa
     const onBlurAct = (val: any) => {
         setFocused(false)
         onBlur?.(val)
+    }
+
+    const onChangeHandler = (e: any) => {
+        onChange?.(e.target.value)
     }
 
     return (
@@ -47,6 +52,7 @@ const Input: FC<InputProps> = ({ value, onBlur, onFocus, label, error, name,disa
                     onFocus={handleFocus}
                     disabled={disabled}
                     onBlur={onBlurAct}
+                    onChange={onChangeHandler}
                     // placeholder={placeholder}
                     {...props} />
             </div>
