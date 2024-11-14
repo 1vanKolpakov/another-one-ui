@@ -1,0 +1,91 @@
+@use '../styles/variables/colors.scss' as c;
+
+.btn {
+  padding: 14px 16px;
+  border: none;
+  border-radius: 4px;
+  color: text-contrast;
+  line-height: 20px;
+  cursor: pointer;
+  // transition: box-shadow 0.01s ease-in-out
+  transition: background-color 0.2s ease, color 0.4s ease;
+  font-weight: 600;
+  font-size: 16px;
+  &:disabled {
+      background-color: c.$grey-10;
+      color: c.$text-secondary;
+      cursor: not-allowed;
+  }
+}
+
+.gold {
+  background-color: c.$primary-gold;
+  &:not(:disabled):hover {
+      background-color: c.$primary-dark-gold;
+  }
+  &:active {
+      box-shadow: 0px 0px 0px 3px rgba(153,132,75,0.2);
+  }
+  
+}
+
+.white {
+  color: c.$primary-dark-gold;
+  border: 1px solid c.$primary-gold;
+  background-color: c.$background-defaul;
+  &:not(:disabled):hover {
+      background-color: c.$background-secondary;
+  }
+  &:active {
+      box-shadow: 0px 0px 0px 3px rgba(153,132,75,0.2);
+      border: 1px solid rgba(153,132,75,0.2);
+  }
+  &:disabled {
+      border-color: c.$stroke-dark-grey;
+  }
+}
+
+.green {
+  font-weight: 400;
+  background-color: c.$primary-green;
+  &:not(:disabled):hover {
+      background-color: c.$primary-dark-green;
+  }
+  &:active {
+      box-shadow: 0px 0px 0px 3px rgba(0,124,66,0.2);
+      border: none;
+  }
+  &:disabled {
+      border: none;
+  }
+}
+
+.blue {
+  font-weight: 400;
+  background-color: c.$primary-blue;
+  &:not(:disabled):hover {
+      background-color: c.$primary-dark-gold;
+  }
+  &:active {
+      box-shadow: 0px 0px 0px 3px rgba(153,132,75,0.2);
+  }
+  &:disabled {
+      border: none;
+  }
+}
+
+.grey {
+  background-color: c.$grey-5;
+  color: c.$text-secondary;
+  border: 1px solid c.$stroke-light-grey;
+  &:not(:disabled):hover {
+      background-color: c.$grey-10;
+  }
+  &:active {
+      box-shadow: 0px 0px 0px 3px rgba(227,227,227,0.3);
+  }
+  &:disabled {
+      border: none;
+      opacity: 0.5;
+  }
+}
