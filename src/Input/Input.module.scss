@@ -63,10 +63,10 @@
       border:1px solid red;
   }
   &:hover {
-      background: var(--background-default);
+      background: c.$background-default;
   }
   &:disabled {
-      background: var(--stroke-light-grey);
+      background: c.$stroke-light-grey;
       cursor: not-allowed;
   }
 }
