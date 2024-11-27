@@ -11,7 +11,9 @@ export interface InputProps {
   onFocus?: any;
   disabled?: boolean;
   onChange?: any;
-  ref?: React.Ref<HTMLInputElement>; 
+  ref?: React.Ref<HTMLInputElement>;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -25,6 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       name,
       disabled,
+      className,
       ...props
     },
     ref
@@ -46,7 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <div className={stls.container}>
+      <div className={classNames(stls.container, className)}>
         <div className={stls.innerContainer}>
           <label
             onClick={handleFocus}
@@ -56,7 +59,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
           <input
-            ref={ref} 
+            ref={ref}
             className={classNames({
               [stls.input]: true,
               [stls.activeInput]: value || focused,
@@ -71,11 +74,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props} // Оставляем остальные пропсы
           />
         </div>
-        {error && (
-          <div className={stls.errorContainer}>
-            <p>{error}</p>
-          </div>
-        )}
+        <div className={stls.errorContainer}>{error && <p>{error}</p>}</div>
       </div>
     );
   }

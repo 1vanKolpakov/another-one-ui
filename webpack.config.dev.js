@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    stats: {
+        warningsFilter: /Deprecation The legacy JS API is deprecated/, // Скрываем только эти предупреждения
+      },
     mode: 'development',
     entry: './src/index.tsx', // Ваша точка входа для разработки компонентов
     output: {

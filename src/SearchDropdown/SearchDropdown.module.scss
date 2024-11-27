@@ -1,0 +1,60 @@
+@use '../styles/variables/colors.scss' as c;
+
+*{
+  // font-family: 'Manrope', sans-serif;
+}
+.inputContainer {
+  position: relative;
+}
+
+.inputer {
+  input {
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+.options {
+  // font-family: 'Manrope', sans-serif;
+  background: c.$background-default;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  // top: ;
+  transform: translateY(-25px);
+  position: absolute;
+  overflow: auto;
+  max-height: 0; // Скрыто по умолчанию
+  display: grid;
+  grid-template-rows: auto; // Каждый элемент занимает свою строку
+  transition: max-height 0.3s ease, border 0.3s ease;
+  border: 0px solid c.$primary-green;
+  .content, .noOptions {
+    padding: 8px; // Отступы для элементов
+    // border-bottom: 1px solid c.$border-light;
+  }
+  
+}
+
+
+.opened {
+  max-height: 170px; // Устанавливаем примерную высоту, в зависимости от количества элементов
+  border: 1px solid c.$primary-green;
+  z-index: 1;
+  .content {
+    cursor: pointer;
+    &:hover {
+      color: c.$stroke-green;
+      
+    }
+    &:nth-child(odd){
+      background-color: c.$background-secondary;
+    }
+    // visibility: visible;
+  }
+}
+// .closed {
+//   grid-template-rows: 0fr;
+//   border: 1px solid c.$text-contrast;
+//   min-height: 0;
+//   visibility: hidden;
+// }

@@ -1,0 +1,19 @@
+@use '../styles/variables/colors.scss' as c;
+.details {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.details .row {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+.details[open] .row {
+  height: auto;
+}
+
+.details .content {
+  grid-row: 1;
+}

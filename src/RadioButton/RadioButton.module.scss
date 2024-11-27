@@ -1,0 +1,86 @@
+@use '../styles/variables/colors.scss' as c;
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  &>* {
+      cursor: pointer;
+  }
+
+  label {
+      font-size: 16px;
+  }
+}
+
+.small {
+  .input {
+      width: 16px;
+      border: 1px solid c.$stroke-green;
+      height: 16px;
+
+      &:checked {
+          border: 5px solid c.$stroke-green;
+      }
+  }
+
+  label {
+      font-size: 14px;
+  }
+}
+
+.large {
+  .input {
+      width: 24px;
+      border: 1px solid c.$stroke-green;
+      height: 24px;
+
+      &:checked {
+          border: 8px solid c.$stroke-green;
+      }
+  }
+
+  label {
+      font-size: 16px;
+  }
+
+}
+
+.input {
+  // ubiraem circle
+  appearance: none;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid c.$stroke-green;
+  border-radius: 50px;
+  transition: 0.2s all linear;
+
+  &:hover {
+      background-color: #DDD;
+  }
+
+  &:checked {
+      border: 8px solid c.$stroke-green;
+  }
+
+  &:disabled {
+      border: 1px solid c.$stroke-light-grey;
+      background-color: c.$stroke-light-grey;
+
+      &~label {
+          color: c.$text-secondary;
+          cursor: not-allowed;
+      }
+
+      &~.container {
+          cursor: not-allowed;
+      }
+  }
+
+  &:disabled:checked {
+      border: 8px solid c.$stroke-light-grey;
+      background-color: white;
+  }
+}
