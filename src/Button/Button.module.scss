@@ -19,6 +19,7 @@
 }
 
 .gold {
+  color: white;
   background-color: c.$primary-gold;
   &:not(:disabled):hover {
       background-color: c.$primary-dark-gold;
@@ -32,7 +33,7 @@
 .white {
   color: c.$primary-dark-gold;
   border: 1px solid c.$primary-gold;
-  background-color: c.$background-defaul;
+  background-color: c.$background-default;
   &:not(:disabled):hover {
       background-color: c.$background-secondary;
   }
@@ -46,6 +47,7 @@
 }
 
 .green {
+  color: white;
   font-weight: 400;
   background-color: c.$primary-green;
   &:not(:disabled):hover {
@@ -61,6 +63,7 @@
 }
 
 .blue {
+  color: white;
   font-weight: 400;
   background-color: c.$primary-blue;
   &:not(:disabled):hover {

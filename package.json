@@ -1,6 +1,6 @@
 {
   "name": "another-one-ui-v3",
-  "version": "0.0.7",
+  "version": "0.0.26",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -43,6 +43,7 @@
     "react-dom": "^18.3.1",
     "sass": "^1.80.7",
     "sass-loader": "^14.2.1",
+    "sass-resources-loader": "^2.2.5",
     "storybook": "^8.4.3",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.1",
