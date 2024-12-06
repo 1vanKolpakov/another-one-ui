@@ -1,0 +1,10 @@
+@use '../styles/variables/colors.scss' as c;
+
+.dropBox {
+  label {
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+}

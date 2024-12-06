@@ -1,6 +1,6 @@
 {
   "name": "another-one-ui-v3",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -30,7 +30,7 @@
     "@storybook/react": "^8.4.3",
     "@storybook/react-webpack5": "^8.4.3",
     "@storybook/test": "^8.4.3",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "css-loader": "^7.1.2",

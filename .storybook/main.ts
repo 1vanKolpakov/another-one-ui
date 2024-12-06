@@ -2,7 +2,13 @@ import type { StorybookConfig } from "@storybook/react-webpack5";
 import path from 'path';
 
 const config: StorybookConfig = {
+  managerHead: (head) => `
+    ${head}
+    <link rel="icon" type="image/png" href="../public/aoui.png" sizes="30x30" />
+  `,
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  staticDirs: ['../public'],
+  
 
   addons: [
     "@storybook/addon-webpack5-compiler-swc",

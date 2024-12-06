@@ -39,7 +39,7 @@
 .opened {
   max-height: 170px; // Устанавливаем примерную высоту, в зависимости от количества элементов
   border: 1px solid c.$primary-green;
-  z-index: 1;
+  z-index: 2;
   .content {
     cursor: pointer;
     &:hover {
@@ -49,12 +49,5 @@
     &:nth-child(odd){
       background-color: c.$background-secondary;
     }
-    // visibility: visible;
   }
 }
-// .closed {
-//   grid-template-rows: 0fr;
-//   border: 1px solid c.$text-contrast;
-//   min-height: 0;
-//   visibility: hidden;
-// }

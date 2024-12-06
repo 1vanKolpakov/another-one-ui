@@ -1,0 +1,23 @@
+@use '../styles/variables/colors.scss' as c;
+
+.circularProgress {
+  display: inline-block;
+  position: relative;
+}
+
+.bgCircle {
+  opacity: 0.3; /* Можно оставить кастомизацию через bgColor */
+  transition: stroke 0.3s ease;
+}
+
+.progressCircle {
+  transition: stroke-dashoffset 0.3s ease, stroke 0.3s ease;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.progressText {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  transition: fill 0.3s ease;
+}

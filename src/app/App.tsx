@@ -8,6 +8,9 @@ import SearchDropdown from "../SearchDropdown/SearchDropdown"
 import Button from "../Button/Button"
 import AsyncSearchDropdown from "../SearchDropdown/AsyncSearchDropdown"
 import Spoiler from "../Spoiler/Spoiler"
+import FileDropBox from "../FileDropBox/FileDropBox"
+import CircularProgress from "../CircularProgress/CircularProgress"
+import IconDoc from "../assets/icon/IconDoc/IconDoc"
 
 export default function App() {
 
@@ -57,10 +60,37 @@ export default function App() {
     setSelectedOption(option);
   };
 
+  const xhr = new XMLHttpRequest();
+
+// Указываем метод и URL
+xhr.open('GET', 'https://run.mocky.io/v3/8f5e265c-bd0a-4539-bc1f-8a4e28a03028', true);
+
+// Обработчик для ответа
+xhr.onload = function () {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    console.log('Response:', xhr.responseText); // Здесь обрабатываем успешный ответ
+  } else {
+    console.error('Error:', xhr.status, xhr.statusText); // Здесь обрабатываем ошибки
+  }
+};
+
+// Обработчик ошибок сети
+xhr.onerror = function () {
+  console.error('Network Error');
+};
+
+// Отправляем запрос
+xhr.send();
+
+
 
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+
+      <FileDropBox />
+      <CircularProgress progress={90} />
+      <IconDoc />
       <Controller
         name="name"
         control={control}
@@ -215,9 +245,9 @@ export default function App() {
           "Луганская Народная Республика",
           "Херсонская область"
       ]
-      } /> */}
+      } />
       <Button disabled >asdasd</Button>
-      {/* <SearchDropdown
+      <SearchDropdown
       options={options.map((option) => option.name)}
       name="dropdown"
       label="name"
