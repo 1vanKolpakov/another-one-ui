@@ -80,7 +80,8 @@ const AsyncSearchDropdown: FC<AsyncSearchDropdownProps> = ({
           className={stls.inputer}
           label={label}
           name={name}
-          ref={inputRef}
+          // @ts-ignore
+          ref={inputRef as React.Ref<HTMLInputElement>}
           value={getDisplayValue()}
           onChange={(e: any) => {
             handleQueryChange(e); // Обновляем запрос с дебаунсом

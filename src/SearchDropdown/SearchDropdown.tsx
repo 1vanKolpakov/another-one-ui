@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, RefObject, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import * as stls  from "./SearchDropdown.module.scss";
 import Input from "../Input/Input";
@@ -25,7 +25,7 @@ const SearchDropdown: FC<SearchDropdownProps> = ({
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>();
 
   useEffect(() => {
     document.addEventListener("click", toggle);
@@ -62,7 +62,8 @@ const SearchDropdown: FC<SearchDropdownProps> = ({
           className={stls.inputer}
           label={label}
           name={name}
-          ref={inputRef}
+          // @ts-ignore
+          ref={inputRef as RefObject<HTMLInputElement>}
           value={getDisplayValue()}
           onChange={(e: any) => {
             setQuery(e);

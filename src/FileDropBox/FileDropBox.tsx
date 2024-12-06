@@ -1,67 +1,68 @@
-import React, { FC, useState } from "react";
-import classNames from "classnames";
-import * as stls from "./FileDropBox.module.scss";
-import IconExpand from "../assets/icon/IconExpand";
+import React, { FC, DragEvent, ChangeEvent } from "react";
+import stls from "./FileDropBox.module.scss";
 import IconDoc from "../assets/icon/IconDoc/IconDoc";
-import { h } from "vue";
-import { log } from "console";
 
 interface FileDropBoxProps {
-	disabled?: boolean
+  children?: React.ReactNode;
+  onDrop?: (files: FileList) => void; // Колбэк для события drop
+  onDragLeave?: (event: DragEvent<HTMLDivElement>) => void; // Колбэк для события dragleave
+  onDragOver?: (event: DragEvent<HTMLDivElement>) => void; // Колбэк для события dragover
+  onFileInputClick?: (files: FileList) => void; // Колбэк для клика по input type="file"
 }
-const FileDropBox: FC<FileDropBoxProps> = ({disabled}) => {
 
-const onDragLeave = (e: React.DragEvent<HTMLElement>) => {
-  if (disabled) return;
-  e.preventDefault();
-};
+const FileDropBox: FC<FileDropBoxProps> = ({
+  children,
+  onDrop,
+  onDragLeave,
+  onDragOver,
+  onFileInputClick,
+}) => {
+  const onDropHandler = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    onDrop?.(files);
+  };
 
-const onDragOver = (e: React.DragEvent<HTMLElement>) => {
-  if (disabled) return;
-  e.preventDefault();
-};
+  const fileinputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const files = e.target.files; // Используем e.target.files для input
+    if (files) {
+      onFileInputClick?.(files);
+    }
+  };
 
-const handleDrop = (e: React.DragEvent<HTMLElement>) => {
-  if (disabled) return;
-  e.preventDefault();
-	console.log(e);
-	
-  const droppedFile = e.dataTransfer.files[0];
+  const dragLeaveHandler = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    onDragLeave?.(e);
+  };
 
-  handleFile(droppedFile);
-};
-
-const handleFile = (file: File) => {
-	console.log(file);
-};
-
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-	console.log('handleFileChange',e);
-	
-	const file = e.target.files?.[0];
-	if (file) {
-		handleFile(file);
-	}
-};
+  const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    onDragOver?.(e);
+  };
 
   return (
-    <div 
-		onDrop={handleDrop}
-    onDragOver={onDragOver}
-    onDragLeave={onDragLeave}
-		className={stls.dropBox}
-		>
-      <label>
-				<IconDoc />
-        LABLE
+    <div
+      className={stls.drop}
+      onDrop={onDropHandler}
+      onDragLeave={dragLeaveHandler}
+      onDragOver={dragOverHandler}
+    >
+      <label className={stls.label}>
+        {children}
+        {!children && (
+          <div className={stls.initialText}>
+            <IconDoc />
+            <span>
+              перетащите файлы, или{" "}
+              <span className={stls.greenText}>выберите на компьютере</span>
+            </span>
+          </div>
+        )}
         <input
-          placeholder="asdasd"
           type="file"
-          hidden
-          id="browse"
-          onChange={handleFileChange}
-          accept=".pdf,.docx,.pptx,.txt,.xlsx"
-          multiple
+          className={stls.input}
+          onChange={fileinputChange}
         />
       </label>
     </div>
