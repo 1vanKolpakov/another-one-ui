@@ -24,7 +24,12 @@
     }
   }
 }
+.error {
+  border: 1px solid c.$main-error;
+  color: c.$main-error;
+}
 .active {
   box-shadow: 0px 0px 5px 0px rgba(0, 143, 76, 0.30);
   border: 1px solid c.$primary-green;
 }
+

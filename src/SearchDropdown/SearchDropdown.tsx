@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useEffect, useRef, useState } from "react";
+import React, { FC, RefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import classNames from "classnames";
 import * as stls  from "./SearchDropdown.module.scss";
 import Input from "../Input/Input";
@@ -11,17 +11,26 @@ interface SearchDropdownProps {
   name: string;
   noOptionsMessage?: string;
   label: string
+  error?: string
+  ref?: React.Ref<HTMLInputElement>;
+}
+export interface SearchDropdownRef {
+  focus: () => void;
+  blur: () => void;
 }
 
-const SearchDropdown: FC<SearchDropdownProps> = ({
+const SearchDropdown = React.forwardRef<SearchDropdownRef,SearchDropdownProps> (({
   options = [],
   selectedValue,
   handleChange,
   className,
   name,
   label,
+  error,
   noOptionsMessage='Ничего не найдено'
-}) => {
+},
+ref
+) => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +51,15 @@ const SearchDropdown: FC<SearchDropdownProps> = ({
     setIsOpen(e.target === inputRef.current);
   }
 
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current?.focus(); // Фокус на внутренний инпут
+    },
+    blur: () => {
+      inputRef.current?.blur(); // Снятие фокуса
+    },
+  }));
+
   const getDisplayValue = () => {
     if (query) return query;
     if (selectedValue) return selectedValue;
@@ -59,10 +77,10 @@ const SearchDropdown: FC<SearchDropdownProps> = ({
     <div className={`dropdown ${className}`}>
       <div className={stls.inputContainer}>
         <Input
+          error={error}
           className={stls.inputer}
           label={label}
           name={name}
-          // @ts-ignore
           ref={inputRef as RefObject<HTMLInputElement>}
           value={getDisplayValue()}
           onChange={(e: any) => {
@@ -97,7 +115,7 @@ const SearchDropdown: FC<SearchDropdownProps> = ({
       </div>
     </div>
   );
-};
+});
 
 
-export default SearchDropdown
+export default SearchDropdown;

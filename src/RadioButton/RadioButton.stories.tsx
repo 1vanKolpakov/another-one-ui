@@ -60,6 +60,18 @@ export const DisabledBigRadioButton: Story = {
   },
 };
 
+export const ErrorBigRadioButton: Story = {
+  args: {
+    value: 'M',
+    name: 'alsls',
+    label: 'Male',
+    size: SizeEnum.large,
+    // disabled: true,
+    // checked: true,
+    error: true
+  },
+};
+
 export const RadioGroup: StoryObj<typeof RadioButton> = {
   args: {
    

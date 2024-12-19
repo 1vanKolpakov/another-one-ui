@@ -84,3 +84,12 @@
       background-color: white;
   }
 }
+
+.error {
+    .input {
+        border: 1px solid c.$main-error;
+    }
+    label {
+        color: c.$main-error;
+    }
+}

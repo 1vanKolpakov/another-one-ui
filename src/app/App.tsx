@@ -69,7 +69,9 @@ xhr.send();
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
 
-      {/* <FileDropBox /> */}
+      <FileDropBox>
+        
+      </FileDropBox>
       <CircularProgress progress={90} />
       <IconDoc />
       <Controller

@@ -1,5 +1,5 @@
 import React, { FC, DragEvent, ChangeEvent } from "react";
-import stls from "./FileDropBox.module.scss";
+import * as stls from "./FileDropBox.module.scss";
 import IconDoc from "../assets/icon/IconDoc/IconDoc";
 
 interface FileDropBoxProps {
@@ -25,7 +25,7 @@ const FileDropBox: FC<FileDropBoxProps> = ({
 
   const fileinputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const files = e.target.files; // Используем e.target.files для input
+    const files = e.target?.files; // Используем e.target.files для input
     if (files) {
       onFileInputClick?.(files);
     }

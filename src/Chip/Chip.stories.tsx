@@ -48,3 +48,10 @@ export const DefaultChip: Story = {
   },
 };
 
+export const ErrorChip: Story = {
+  args: {
+    name: 'Сельская',
+    error: true
+  },
+};
+
