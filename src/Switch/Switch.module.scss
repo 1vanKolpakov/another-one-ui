@@ -1,0 +1,65 @@
+@use '../styles/variables/colors.scss' as c;
+
+.switch {
+  width: 36px;
+  height: 20px;
+  position: relative;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch label {
+  cursor: pointer;
+  position: absolute;
+  background-color: c.$stroke-light-grey;
+  inset: 0 0 0 0;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  display: block;
+  &:hover {
+    background-color: c.$background-grey-hovered;
+  }
+}
+
+.switch label::after {
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  content: '';
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transition: left .3s;
+  top: 2px;
+  left: 2px;
+}
+
+.switch input:checked ~ label {
+  background: c.$stroke-green;
+
+  &:hover {
+    background-color: c.$primary-green-hover;
+  }
+
+  
+}
+
+
+.switch input:checked ~ label::after {
+  left: calc(100% - 18px)
+}
+
+.switch input:disabled ~ label {
+  background-color: c.$grey-10;
+  cursor: not-allowed;
+  &:hover {
+    background-color: c.$grey-10;
+  }
+}
+
+.switch input:disabled ~ label::after {
+  background-color: c.$background-grey-hovered;
+}

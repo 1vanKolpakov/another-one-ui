@@ -7,6 +7,7 @@ import SearchDropdown from "./SearchDropdown/SearchDropdown";
 import AsyncSearchDropdown from "./SearchDropdown/AsyncSearchDropdown";
 import Spoiler from "./Spoiler/Spoiler";
 import FileDropBox from "./FileDropBox/FileDropBox";
+import Switch from "./Switch/Switch";
 import './styles/index.scss'
 
 
@@ -21,5 +22,6 @@ export {
     SearchDropdown,
     AsyncSearchDropdown,
     Spoiler,
-    FileDropBox
+    FileDropBox,
+    Switch
 }

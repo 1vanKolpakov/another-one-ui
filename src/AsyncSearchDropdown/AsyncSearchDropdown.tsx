@@ -12,6 +12,7 @@ interface AsyncSearchDropdownProps {
   noOptionsMessage?: string;
   label: string;
   debounceTime?: number; // Время задержки для дебаунса (в миллисекундах)
+  error?: string;
 }
 
 const AsyncSearchDropdown: FC<AsyncSearchDropdownProps> = ({
@@ -23,6 +24,7 @@ const AsyncSearchDropdown: FC<AsyncSearchDropdownProps> = ({
   label,
   noOptionsMessage = "Ничего не найдено",
   debounceTime = 300, // Задержка по умолчанию
+  error
 }) => {
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState<string[]>([]);
@@ -77,6 +79,7 @@ const AsyncSearchDropdown: FC<AsyncSearchDropdownProps> = ({
     <div className={`dropdown ${className}`}>
       <div className={stls.inputContainer}>
         <Input
+          error={error}
           className={stls.inputer}
           label={label}
           name={name}
